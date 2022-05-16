@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>class-easy</title>
+		<style>
+			body{
+				font-family: Arial, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>class-easy</h1>
+		</center>
+		
+		<table>
+			<tr>
+				<td>Class name : </td>
+				<td><input type = "text" id = "className" placeholder = "class name" /></td>
+			</tr>	
+			<tr>
+				<td>Super class name : </td>
+				<td><input type = "text" id = "superClassName" placeholder = "super class name" /></td>
+			</tr>
+			<tr>
+				<td colspan = 2>
+					<select name = "type" id = "classType">
+						<option value = "class">Class</option>
+						<option value = "interface">Interface</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan = 2><center><a href = "#" onClick="classAdd()" id = "addBtn" class = "btn">Add</a></center></td>
+			</tr>
+		</table>
+		<div id = "values"><h2>values</h2></div>
+	</body>
+	
+	<!--<script src = "ClassValue.js"></script>-->
+	<script>
+		function classAdd(){
+			values = document.getElementById("values");
+			classType = document.getElementById("classType");
+			className = document.getElementById("className");
+			superClassName = document.getElementById("superClassName");
+			values.innerHTML += classType.value + " " + className.value + " extends " + superClassName.value + "<br>";
+		}
+	</script>
+</html>
+
