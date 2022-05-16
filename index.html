@@ -37,14 +37,19 @@
 		<div id = "values"><h2>values</h2></div>
 	</body>
 	
-	<!--<script src = "ClassValue.js"></script>-->
+	<script src = "ClassValue.js"></script>
+	<script src = "ClassValueList.js"></script>
 	<script>
+		let classValueList = new ClassValueList();
 		function classAdd(){
-			values = document.getElementById("values");
 			classType = document.getElementById("classType");
 			className = document.getElementById("className");
 			superClassName = document.getElementById("superClassName");
-			values.innerHTML += classType.value + " " + className.value + " extends " + superClassName.value + "<br>";
+			
+			classValueList.add(new ClassValue(classType.value, className.value, superClassName.value));
+			
+			values = document.getElementById("values");
+			values.innerHTML += classValueList.next.classType + " " + classValueList.next.className + " extends " + classValueList.next.superClassName + "<br>";
 		}
 	</script>
 </html>
