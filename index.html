@@ -34,23 +34,13 @@
 				<td colspan = 2><center><a href = "#" onClick="classAdd()" id = "addBtn" class = "btn">Add</a></center></td>
 			</tr>
 		</table>
+		<br>
+		<div onClick = "refreshValues()">refresh</div>
+		<br>
 		<div id = "values"><h2>values</h2></div>
 	</body>
-	
-	<script src = "ClassValue.js"></script>
-	<script src = "ClassValueList.js"></script>
-	<script>
-		let classValueList = new ClassValueList();
-		function classAdd(){
-			classType = document.getElementById("classType");
-			className = document.getElementById("className");
-			superClassName = document.getElementById("superClassName");
-			
-			classValueList.add(new ClassValue(classType.value, className.value, superClassName.value));
-			
-			values = document.getElementById("values");
-			values.innerHTML += classValueList.next.classType + " " + classValueList.next.className + " extends " + classValueList.next.superClassName + "<br>";
-		}
-	</script>
+	<script type="text/javascript" src = "ClassValue.js"></script>
+	<script type="text/javascript" src = "ClassValueList.js"></script>
+	<script type="text/javascript" src = "ClassValueListIterator.js"></script>
+	<script type="text/javascript" src = "Main.js"></script>
 </html>
-
