@@ -21,16 +21,30 @@ body{
 	width: -webkit-fill-available;
 }
 
-.addTable tr td{
+.tableControl tr td{
 	padding: 5px;
 }
 
-.addTable{
+.tableControl{
 	width: -webkit-fill-available;
 }
 
 .cursorHand{
 	cursor: pointer;
+}
+
+.group{
+	background-color: rgba(0, 0, 10, 0.25);
+	border-radius: 5px;
+	margin: 0px 6px;
+}
+
+#exportBtn{
+	background-color: rgba(0, 50, 50, 1);
+}
+
+#addBtn{
+	background-color: rgba(10, 40, 90, 1);
 }
 
 @media (max-width: 700px) {
@@ -44,5 +58,6 @@ body{
 @media (min-width: 700px) {
 	.panelItem{
 		width: 50%;
+		float: left;
 	}
 }

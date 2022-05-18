@@ -9,37 +9,72 @@
 			<center>
 				<h1>class-easy</h1>
 			</center>
-			<br><br><br>
+			<br>
 			<div class = "panel">
 				<div class = "panelItem addPanel">
-					<table class = "addTable">
-						<tr>
-							<td>Class name: </td>
-							<td><input type = "text" class = "control" id = "className" placeholder = "class name" /></td>
-						</tr>	
-						<tr>
-							<td>Super class name: </td>
-							<td><input type = "text" class = "control" id = "superClassName" placeholder = "super class name" /></td>
-						</tr>
-						<tr>
-							<td>Class type: </td>
-							<td>
-								<select class = "control" name = "type" id = "classType">
-									<option value = "class">class</option>
-									<option value = "interface">interface</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td colspan = 2><center><div onClick="classAdd()" id = "addBtn" class = "btn cursorHand">Add</div></center></td>
-						</tr>
-						<tr>
-							<td colspan = 2><div onClick = "refreshValues()" class = "cursorHand">refresh</div></center></td>
-						</tr>
-					</table>
+					<div class = "group">
+						<h2>Add Class</h2>
+						<hr>
+						<table class = "tableControl">
+							<tr>
+								<td>Class name: </td>
+								<td><input type = "text" class = "control" id = "className" placeholder = "class name" /></td>
+							</tr>	
+							<tr>
+								<td>Super class name: </td>
+								<td><input type = "text" class = "control" id = "superClassName" placeholder = "super class name" /></td>
+							</tr>
+							<tr>
+								<td>Class type: </td>
+								<td>
+									<select class = "control" name = "type" id = "classType">
+										<option value = "class">class</option>
+										<option value = "interface">interface</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td colspan = 2><center><div onClick="classAdd()" id = "addBtn" class = "btn cursorHand">Add</div></center></td>
+							</tr>
+							<tr>
+								<td colspan = 2><div onClick = "refreshValues()" class = "cursorHand">refresh</div></center></td>
+							</tr>
+						</table>
+					</div>
 					<br>
-					<h2>Values</h2>
-					<div id = "values"></div>
+					<div class = "group">
+						<font style = "font-size:24px;">class list</font>
+						<hr>
+						<div id = "addedValues"></div>
+					</div>
+				</div>
+				<div class = "panelItem exportPanel">
+					<div class = "group">
+						<h2>Export Class</h2>
+						<hr>
+						<table class = "tableControl">
+							<tr>
+								<td>Language: </td>
+								<td>
+									<select class = "control" name = "type" id = "classType">
+										<option value = "class">JAVA</option>
+										<option value = "interface">C++</option>
+										<option value = "interface">C#</option>
+										<option value = "interface">PYTHON</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td colspan = 2><center><div onClick="exportClass()" id = "exportBtn" class = "btn cursorHand">Export</div></center></td>
+							</tr>
+						</table>
+					</div>
+					<br>
+					<div class = "group">
+						<font style = "font-size:24px;">exported class</font>
+						<hr>
+						<div id = "exportedClass"></div>
+					</div>
 				</div>
 			</div>
 		</div>
