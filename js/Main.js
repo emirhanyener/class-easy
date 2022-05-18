@@ -1,19 +1,24 @@
 var list = new ClassValue();
+var values = document.getElementById("values");
+var classType = document.getElementById("classType");
+var className = document.getElementById("className");
+var superClassName = document.getElementById("superClassName");
+
 function classAdd(){
-	var classType = document.getElementById("classType");
-	var className = document.getElementById("className");
-	var superClassName = document.getElementById("superClassName");
-	
 	list.add(classType.value, className.value, superClassName.value);
-	
-	var values = document.getElementById("values");
-	values.innerHTML += classType.value + " " + className.value + " extends " + superClassName.value + "<br>";
+	refreshValues();
 }
+
+function classRemove(className){
+	list.remove(className);
+	refreshValues();
+}
+
 function refreshValues(){
 	values.innerHTML = "";
 	var iterator = new ClassValueListIterator(list);
 	
 	while(iterator.next()){
-		values.innerHTML += iterator.get().classType + " " + iterator.get().className + " extends " + iterator.get().superClassName + "<br>";3
+		values.innerHTML += "<div onClick = \"classRemove(\'" + iterator.get().className + "\')\">" + iterator.get().classType + " " + iterator.get().className + " extends " + iterator.get().superClassName + "</div><br>";
 	}
 }

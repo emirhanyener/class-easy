@@ -14,4 +14,14 @@ class ClassValue{
 			this.next.add(classType, className, superClassName);
 		}
 	}
+	
+	remove(className){
+		if(this.next != null){
+			if(this.next.className == className)
+				this.next = this.next.next;
+			else{
+				this.next.remove(className);
+			}
+		}
+	}
 }

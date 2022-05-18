@@ -1,5 +1,6 @@
 class ClassValueListIterator{
 	constructor(_list){
+		this.first = _list;
 		this.list = _list;
 	}
 	
@@ -13,5 +14,9 @@ class ClassValueListIterator{
 	
 	get(){
 		return this.list;
+	}
+	
+	resetList(){
+		this.list = this.first;
 	}
 }
