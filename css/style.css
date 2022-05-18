@@ -1,0 +1,33 @@
+body{
+	font-family: Arial, sans-serif;
+	background-color: #222;
+	color: white;
+}
+
+.container{
+	padding: 10px 50px;
+}
+
+.btn{
+	border: none;
+	background-color: #4f4;
+	padding: 15px 30px;
+	color: white;
+}
+
+.control{
+	border: none;
+	padding: 10px 15px;
+}
+
+#classType{
+	width: 100%;
+}
+
+.addTable tr td{
+	padding: 5px;
+}
+
+.cursorHand{
+	cursor: pointer;
+}
