@@ -10,35 +10,38 @@
 				<h1>class-easy</h1>
 			</center>
 			<br><br><br>
-			
-			<table class = "addTable">
-				<tr>
-					<td>Class name: </td>
-					<td><input type = "text" class = "control" id = "className" placeholder = "class name" /></td>
-				</tr>	
-				<tr>
-					<td>Super class name: </td>
-					<td><input type = "text" class = "control" id = "superClassName" placeholder = "super class name" /></td>
-				</tr>
-				<tr>
-					<td>Class type: </td>
-					<td>
-						<select class = "control" name = "type" id = "classType">
-							<option value = "class">class</option>
-							<option value = "interface">interface</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td colspan = 2><center><div onClick="classAdd()" id = "addBtn" class = "btn cursorHand">Add</div></center></td>
-				</tr>
-				<tr>
-					<td colspan = 2><div onClick = "refreshValues()" class = "cursorHand">refresh</div></center></td>
-				</tr>
-			</table>
-			<br>
-			<h2>Values</h2>
-			<div id = "values"></div>
+			<div class = "panel">
+				<div class = "panelItem addPanel">
+					<table class = "addTable">
+						<tr>
+							<td>Class name: </td>
+							<td><input type = "text" class = "control" id = "className" placeholder = "class name" /></td>
+						</tr>	
+						<tr>
+							<td>Super class name: </td>
+							<td><input type = "text" class = "control" id = "superClassName" placeholder = "super class name" /></td>
+						</tr>
+						<tr>
+							<td>Class type: </td>
+							<td>
+								<select class = "control" name = "type" id = "classType">
+									<option value = "class">class</option>
+									<option value = "interface">interface</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan = 2><center><div onClick="classAdd()" id = "addBtn" class = "btn cursorHand">Add</div></center></td>
+						</tr>
+						<tr>
+							<td colspan = 2><div onClick = "refreshValues()" class = "cursorHand">refresh</div></center></td>
+						</tr>
+					</table>
+					<br>
+					<h2>Values</h2>
+					<div id = "values"></div>
+				</div>
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src = "js/ClassValue.js"></script>

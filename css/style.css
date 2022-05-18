@@ -18,16 +18,31 @@ body{
 .control{
 	border: none;
 	padding: 10px 15px;
-}
-
-#classType{
-	width: 100%;
+	width: -webkit-fill-available;
 }
 
 .addTable tr td{
 	padding: 5px;
 }
 
+.addTable{
+	width: -webkit-fill-available;
+}
+
 .cursorHand{
 	cursor: pointer;
+}
+
+@media (max-width: 700px) {
+	.panelItem{
+		width: 100%;
+	}
+	.addTable{
+		width: 100%;
+	}
+}
+@media (min-width: 700px) {
+	.panelItem{
+		width: 50%;
+	}
 }
