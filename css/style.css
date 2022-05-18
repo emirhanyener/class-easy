@@ -33,6 +33,13 @@ body{
 	cursor: pointer;
 }
 
+.addedValueItem{
+	transition: 250ms;
+}
+.addedValueItem:hover{
+	color: maroon;
+}
+
 .group{
 	background-color: rgba(0, 0, 10, 0.25);
 	border-radius: 5px;

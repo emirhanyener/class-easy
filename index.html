@@ -56,8 +56,8 @@
 							<tr>
 								<td>Language: </td>
 								<td>
-									<select class = "control" name = "type" id = "classType">
-										<option value = "java">JAVA</option>
+									<select class = "control" name = "type" id = "exportLanguage">
+										<option onClick = "changeLanguage(new JavaExporter())" value = "java">JAVA</option>
 										<option value = "cplusplus">C++</option>
 										<option value = "csharp">C#</option>
 										<option value = "python">PYTHON</option>
@@ -81,5 +81,7 @@
 	</body>
 	<script type="text/javascript" src = "js/ClassValue.js"></script>
 	<script type="text/javascript" src = "js/ClassValueListIterator.js"></script>
+	<script type="text/javascript" src = "js/export/JavaExporter.js"></script>
+	<script type="text/javascript" src = "js/export/ExportClass.js"></script>
 	<script type="text/javascript" src = "js/Main.js"></script>
 </html>
