@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var values = document.getElementById("values");
+var values = document.getElementById("addedValues");
 var classType = document.getElementById("classType");
 var className = document.getElementById("className");
 var superClassName = document.getElementById("superClassName");

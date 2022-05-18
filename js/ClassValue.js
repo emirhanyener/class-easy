@@ -7,11 +7,13 @@ class ClassValue{
 	}
 	
 	add(classType, className, superClassName){
-		if(this.next == null){
-			this.next = new ClassValue(classType, className, superClassName);
-		}
-		else{
-			this.next.add(classType, className, superClassName);
+		if(!this.isExist(className)){
+			if(this.next == null){
+				this.next = new ClassValue(classType, className, superClassName);
+			}
+			else{
+				this.next.add(classType, className, superClassName);
+			}
 		}
 	}
 	
@@ -23,5 +25,15 @@ class ClassValue{
 				this.next.remove(className);
 			}
 		}
+	}
+	
+	isExist(className){
+		if(this.next != null){
+			if(this.next.className == className)
+				return true;
+			if(this.next.isExist(className))
+				return true;
+		}
+		return false;
 	}
 }
