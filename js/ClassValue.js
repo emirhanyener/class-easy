@@ -1,18 +1,19 @@
 class ClassValue{
-	constructor(classType, className, superClassName){
+	constructor(classType, className, superClassName, superClassType){
 		this.classType = classType;
 		this.className = className;
 		this.superClassName = superClassName;
+		this.superClassType = superClassType;
 		this.next = null;
 	}
 	
-	add(classType, className, superClassName){
+	add(classType, className, superClassName, superClassType){
 		if(!this.isExist(className)){
 			if(this.next == null){
-				this.next = new ClassValue(classType, className, superClassName);
+				this.next = new ClassValue(classType, className, superClassName, superClassType);
 			}
 			else{
-				this.next.add(classType, className, superClassName);
+				this.next.add(classType, className, superClassName, superClassType);
 			}
 		}
 	}
