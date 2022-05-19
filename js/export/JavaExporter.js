@@ -3,6 +3,7 @@ class JavaExporter{
 	}
 	
 	exportClass(){
+		var tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		var values = "";
 		var iterator = new ClassValueListIterator(list);
 		
@@ -15,7 +16,13 @@ class JavaExporter{
 				if(iterator.get().superClassType == "interface")
 					values += " implements " + iterator.get().superClassName;
 			}
-			values += "{<br><br>}</div><br><br>"
+			values += "{<br>";
+			//class scope
+			if(iterator.get().classType == "class")
+				values += tabSpace + iterator.get().className + "() {<br><br>" + tabSpace + "}";
+			
+			//class scope end
+			values += "<br>}</div><br><br>"
 		}
 		return values;
 	}
