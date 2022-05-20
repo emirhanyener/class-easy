@@ -20,7 +20,7 @@ class JavaExporter extends ILanguageExporter{
 			values += "{<br>";
 			//class scope
 			if(iterator.get().classType == "class")
-				values += tabSpace + iterator.get().className + "() {<br><br>" + tabSpace + "}";
+				values += tabSpace + "public " + iterator.get().className + "() {<br><br>" + tabSpace + "}";
 			
 			//class scope end
 			values += "<br>}</div><br><br>"
