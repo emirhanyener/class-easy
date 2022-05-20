@@ -9,6 +9,11 @@ var superClassType = document.getElementById("superClassType");
 var exportedClass = document.getElementById("exportedClass");
 var exportLanguage = document.getElementById("exportLanguage");
 var ec = new ExportClass(list);
+ec.changeLanguage(new JavaExporter());
+
+exportLanguage.addEventListener("change", function(event) {
+	changeClassLanguage(eval(exportLanguage.value));
+});
 
 function classAdd(){
 	list.add(classType.value, className.value, superClassName.value, superClassType.value);
