@@ -12,7 +12,7 @@ class CSharpExporter extends ILanguageExporter{
 			values += "<div class = 'exportedClass'>"
 			values += iterator.get().classType + " " + iterator.get().className;
 			if(iterator.get().superClassName != ""){
-				values += " : ";
+				values += " : " + iterator.get().superClassName;
 			}
 			values += "{<br>";
 			//class scope
