@@ -8,7 +8,7 @@ class ClassValue{
 		this.next = null;
 	}
 	
-	add(classType, className, superClassName, superClassType){
+	add(classType, className, superClassName, superClassType, methods){
 		if(!this.isExist(className)){
 			if(this.next == null){
 				this.next = new ClassValue(classType, className, superClassName, superClassType, methods);

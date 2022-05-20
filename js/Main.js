@@ -20,17 +20,23 @@ exportLanguage.addEventListener("change", function(event) {
 function classAdd(){
 	methodModifiers = document.getElementsByClassName("methodModifierItem");
 	methodNames = document.getElementsByClassName("methodNameItem");
+	methodReturnTypes = document.getElementsByClassName("methodReturnTypeItem");
 	const methodsArray = [];
 	
 	for(let i = 0; i < methodModifiers.length; i++){
-		methodsArray.push([methodModifiers[i].value, methodNames[i].value]);
+		if(methodNames[i].value != ""){
+			if(methodReturnTypes[i].value == "")
+				methodsArray.push([methodModifiers[i].value, "void", methodNames[i].value]);
+			else
+				methodsArray.push([methodModifiers[i].value, methodReturnTypes[i].value, methodNames[i].value]);
+		}
 	}
 	
 	list.add(classType.value, className.value, superClassName.value, superClassType.value, methodsArray);
 	refreshValues();
 }
 function methodAdd(){
-	methods.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
+	methods.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
 }
 
 function classRemove(className){
