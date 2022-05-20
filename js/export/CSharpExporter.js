@@ -1,4 +1,4 @@
-class JavaExporter extends ILanguageExporter{
+class CSharpExporter extends ILanguageExporter{
 	constructor(){
 		super();
 	}
@@ -12,10 +12,7 @@ class JavaExporter extends ILanguageExporter{
 			values += "<div class = 'exportedClass'>"
 			values += iterator.get().classType + " " + iterator.get().className;
 			if(iterator.get().superClassName != ""){
-				if(iterator.get().superClassType == "class")
-					values += " extends " + iterator.get().superClassName;
-				if(iterator.get().superClassType == "interface")
-					values += " implements " + iterator.get().superClassName;
+				values += " : ";
 			}
 			values += "{<br>";
 			//class scope

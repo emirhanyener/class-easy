@@ -1,7 +1,7 @@
 class ExportClass{
 	constructor(list){
 		this.list = list;
-		this.language = new JavaExporter();
+		this.language = new ILanguageExporter();
 	}
 	
 	exportClass(){
