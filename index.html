@@ -2,15 +2,17 @@
 <html>
 	<head>
 		<title>class-easy</title>
-	<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
 		<div class = "container">
+			<!-- Header -->
 			<center>
 				<h1>class-easy</h1>
 			</center>
 			<br>
 			<div class = "panel">
+				<!-- Add (left) panel -->
 				<div class = "panelItem addPanel">
 					<div class = "group">
 						<h2>Add Class</h2>
@@ -57,6 +59,8 @@
 						<div id = "addedValues"></div>
 					</div>
 				</div>
+				
+				<!-- Export (right) panel -->
 				<div class = "panelItem exportPanel">
 					<div class = "group">
 						<h2>Export Class</h2>
@@ -65,10 +69,10 @@
 							<tr>
 								<td>Language: </td>
 								<td>
-									<select class = "control" name = "type" id = "exportLanguage">
-										<option onClick = "changeLanguage(new JavaExporter())" value = "java">JAVA</option>
+									<select onChange = "changeClassLanguage(exportLanguage.getAttribute('select-language'))" class = "control" name = "type" id = "exportLanguage">
+										<option selected-language = "new JavaExporter()" value = "java">JAVA</option>
 										<option value = "cplusplus">C++</option>
-										<option value = "csharp">C#</option>
+										<option selected-language = "new CSharpExporter()" value = "csharp">C#</option>
 										<option value = "python">PYTHON</option>
 									</select>
 								</td>
@@ -88,9 +92,20 @@
 			</div>
 		</div>
 	</body>
+	
+	<!-- Scripts -->
 	<script type="text/javascript" src = "js/ClassValue.js"></script>
 	<script type="text/javascript" src = "js/ClassValueListIterator.js"></script>
+	<script type="text/javascript" src = "js/export/ILanguageExporter.js"></script>
 	<script type="text/javascript" src = "js/export/JavaExporter.js"></script>
+	<script type="text/javascript" src = "js/export/CSharpExporter.js"></script>
 	<script type="text/javascript" src = "js/export/ExportClass.js"></script>
 	<script type="text/javascript" src = "js/Main.js"></script>
+	
+	
+	<!--
+	Add and Export Test-->
+	
+	<script type="text/javascript" src = "tests/AddExportTest.js"></script>
+	
 </html>
