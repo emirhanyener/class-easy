@@ -54,6 +54,9 @@ body{
 	background-color: rgba(10, 40, 90, 1);
 }
 
+#addMethodBtn{
+	background-color: rgba(80, 125, 10, 1);
+}
 @media (max-width: 700px) {
 	.panelItem{
 		width: 100%;
