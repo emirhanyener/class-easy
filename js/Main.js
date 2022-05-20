@@ -6,6 +6,8 @@ var className = document.getElementById("className");
 var superClassName = document.getElementById("superClassName");
 var superClassType = document.getElementById("superClassType");
 
+var methods = document.getElementById("methods");
+
 var exportedClass = document.getElementById("exportedClass");
 var exportLanguage = document.getElementById("exportLanguage");
 var ec = new ExportClass(list);
@@ -16,8 +18,19 @@ exportLanguage.addEventListener("change", function(event) {
 });
 
 function classAdd(){
-	list.add(classType.value, className.value, superClassName.value, superClassType.value);
+	methodModifiers = document.getElementsByClassName("methodModifierItem");
+	methodNames = document.getElementsByClassName("methodNameItem");
+	const methodsArray = [];
+	
+	for(let i = 0; i < methodModifiers.length; i++){
+		methodsArray.push([methodModifiers[i].value, methodNames[i].value]);
+	}
+	
+	list.add(classType.value, className.value, superClassName.value, superClassType.value, methodsArray);
 	refreshValues();
+}
+function methodAdd(){
+	methods.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
 }
 
 function classRemove(className){
