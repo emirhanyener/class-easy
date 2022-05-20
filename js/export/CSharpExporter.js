@@ -16,11 +16,28 @@ class CSharpExporter extends ILanguageExporter{
 			}
 			values += "{<br>";
 			//class scope
-			if(iterator.get().classType == "class")
-				values += tabSpace + "public " + iterator.get().className + "() {<br><br>" + tabSpace + "}";
+			if(iterator.get().classType == "class"){
+				values += tabSpace + "public " + iterator.get().className + "() {<br><br>" + tabSpace + "}<br>";
+			
+				for(let i = 0; i < iterator.get().methods.length; i++){
+					if(iterator.get().methods.length != 0){
+						if(iterator.get().methods[i][1] != "void")
+							values += tabSpace + iterator.get().methods[i][0] + " " + iterator.get().methods[i][1] + " " + iterator.get().methods[i][2] + "(){ <br>" + tabSpace + tabSpace + "return //return " + iterator.get().methods[i][1] + " type<br>" + tabSpace + "}<br>";
+						else
+							values += tabSpace + iterator.get().methods[i][0] + " void " + iterator.get().methods[i][2] + "(){ <br>" + tabSpace + "<br>" + tabSpace + "}<br>";
+
+					}
+				}
+			}
+			else{
+				for(let i = 0; i < iterator.get().methods.length; i++){
+					if(iterator.get().methods.length != 0)
+						values += tabSpace + iterator.get().methods[i][1] + " " + iterator.get().methods[i][2] + "();<br>";
+				}
+			}
 			
 			//class scope end
-			values += "<br>}</div><br><br>"
+			values += "}</div><br>"
 		}
 		return values;
 	}
