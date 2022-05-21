@@ -6,4 +6,12 @@ class IExporter{
 	exportStruct(){
 		
 	}
+	
+	exportClass(classValue){
+
+	}
+
+	exportInterface(classValue){
+		
+	}
 }

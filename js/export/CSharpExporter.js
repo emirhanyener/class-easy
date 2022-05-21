@@ -41,4 +41,12 @@ class CSharpExporter extends IExporter{
 		}
 		return values;
 	}
+
+	exportClass(classValue){
+		
+	}
+
+	exportInterface(classValue){
+
+	}
 }

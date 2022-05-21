@@ -1,10 +1,10 @@
 class JavaExporter extends IExporter{
+	tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	constructor(){
 		super();
 	}
 	
 	exportStruct(){
-		var tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		var values = "";
 		var iterator = new ClassValueListIterator(list);
 		
@@ -20,26 +20,38 @@ class JavaExporter extends IExporter{
 			values += "{<br>";
 			//class scope
 			if(iterator.get().classType == "class"){
-				values += tabSpace + "public " + iterator.get().className + "() {<br><br>" + tabSpace + "}<br>";
-			
-				for(let i = 0; i < iterator.get().methods.length; i++){
-					if(iterator.get().methods.length != 0){
-						if(iterator.get().methods[i][1] != "void")
-							values += tabSpace + iterator.get().methods[i][0] + " " + iterator.get().methods[i][1] + " " + iterator.get().methods[i][2] + "(){ <br>" + tabSpace + tabSpace + "return //return " + iterator.get().methods[i][1] + " type<br>" + tabSpace + "}<br>";
-						else
-							values += tabSpace + iterator.get().methods[i][0] + " void " + iterator.get().methods[i][2] + "(){ <br>" + tabSpace + "<br>" + tabSpace + "}<br>";
-
-					}
-				}
+				values += this.exportClass(iterator.get());
 			}
 			else{
-				for(let i = 0; i < iterator.get().methods.length; i++){
-					if(iterator.get().methods.length != 0)
-						values += tabSpace + iterator.get().methods[i][0] + " " + iterator.get().methods[i][1] + " " + iterator.get().methods[i][2] + "();<br>";
-				}
+				values += this.exportInterface(iterator.get());
 			}
 			//class scope end
 			values += "}</div><br>"
+		}
+		return values;
+	}
+
+	exportClass(classValue){
+		var values = "";
+		values += this.tabSpace + "public " + classValue.className + "() {<br><br>" + this.tabSpace + "}<br>";
+			
+		for(let i = 0; i < classValue.methods.length; i++){
+			if(classValue.methods.length != 0){
+				if(classValue.methods[i][1] != "void")
+					values += this.tabSpace + classValue.methods[i][0] + " " + classValue.methods[i][1] + " " + classValue.methods[i][2] + "(){ <br>" + this.tabSpace + this.tabSpace + "return //return " + classValue.methods[i][1] + " type<br>" + this.tabSpace + "}<br>";
+				else
+					values += this.tabSpace + classValue.methods[i][0] + " void " + classValue.methods[i][2] + "(){ <br>" + this.tabSpace + "<br>" + this.tabSpace + "}<br>";
+
+			}
+		}
+		return values;
+	}
+
+	exportInterface(classValue){
+		var values = "";
+		for(let i = 0; i < classValue.methods.length; i++){
+			if(classValue.methods.length != 0)
+				values += this.tabSpace + classValue.methods[i][0] + " " + classValue.methods[i][1] + " " + classValue.methods[i][2] + "();<br>";
 		}
 		return values;
 	}

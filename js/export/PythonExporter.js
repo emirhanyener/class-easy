@@ -34,4 +34,12 @@ class PythonExporter extends IExporter{
 		}
 		return values;
 	}
+
+	exportClass(classValue){
+		
+	}
+
+	exportInterface(classValue){
+
+	}
 }

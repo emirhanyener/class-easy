@@ -62,6 +62,14 @@ class CPlusPlusExporter extends IExporter{
 		}
 		return values;
 	}
+
+	exportClass(classValue){
+		
+	}
+
+	exportInterface(classValue){
+
+	}
 	
 	countPrivateMethods(iterator){
 		for(let i = 0; i < iterator.get().methods.length; i++){
