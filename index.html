@@ -48,13 +48,13 @@
 								<td colspan = 2><center>Methods</center></td>
 							</tr>
 							<tr>
-								<td colspan = 2><table class = "tableControl" id = "methods" ></table></td>
+								<td colspan = 2><table class = "tableControl" id = "methodsTable" ></table></td>
 							</tr>
 							<tr>
-								<td colspan = 2><center><div onClick="methodAdd()" id = "addMethodBtn" class = "btn cursorHand">Add Method</div></center></td>
+								<td colspan = 2><center><div onClick="addMethod()" id = "addMethodBtn" class = "btn cursorHand">Add Method</div></center></td>
 							</tr>
 							<tr>
-								<td colspan = 2><center><div onClick="classAdd()" id = "addBtn" class = "btn cursorHand">Add Class</div></center></td>
+								<td colspan = 2><center><div onClick="addClass()" id = "addClassBtn" class = "btn cursorHand">Add Class</div></center></td>
 							</tr>
 							<tr>
 								<td colspan = 2><div onClick = "refreshValues()" class = "cursorHand">refresh</div></center></td>
@@ -65,20 +65,20 @@
 					<div class = "group">
 						<font style = "font-size:24px;">class list</font>
 						<hr>
-						<div id = "addedValues"></div>
+						<div id = "addedValuesDiv"></div>
 					</div>
 				</div>
 				
 				<!-- Export (right) panel -->
 				<div class = "panelItem exportPanel">
 					<div class = "group">
-						<h2>Export Class</h2>
+						<h2>Export Struct</h2>
 						<hr>
 						<table class = "tableControl">
 							<tr>
-								<td>Language: </td>
+								<td>Programming Language: </td>
 								<td>
-									<select class = "control" name = "type" id = "exportLanguage">
+									<select class = "control" name = "type" id = "programmingLanguage">
 										<option value = "new JavaExporter()">JAVA</option>
 										<option value = "new CPlusPlusExporter()">C++</option>
 										<option value = "new CSharpExporter()">C#</option>
@@ -87,15 +87,15 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan = 2><center><div onClick="exportClass()" id = "exportBtn" class = "btn cursorHand">Export</div></center></td>
+								<td colspan = 2><center><div onClick="exportStruct()" id = "exportStructBtn" class = "btn cursorHand">Export</div></center></td>
 							</tr>
 						</table>
 					</div>
 					<br>
 					<div class = "group">
-						<font style = "font-size:24px;">exported class</font>
+						<font style = "font-size:24px;">exported struct</font>
 						<hr>
-						<div id = "exportedClass"></div>
+						<div id = "exportedStruct"></div>
 					</div>
 				</div>
 			</div>
@@ -105,7 +105,7 @@
 	<!-- Scripts -->
 	<script type="text/javascript" src = "js/ClassValue.js"></script>
 	<script type="text/javascript" src = "js/ClassValueListIterator.js"></script>
-	<script type="text/javascript" src = "js/export/ILanguageExporter.js"></script>
+	<script type="text/javascript" src = "js/export/IExporter.js"></script>
 	<script type="text/javascript" src = "js/export/JavaExporter.js"></script>
 	<script type="text/javascript" src = "js/export/CSharpExporter.js"></script>
 	<script type="text/javascript" src = "js/export/CPlusPlusExporter.js"></script>
@@ -113,10 +113,8 @@
 	<script type="text/javascript" src = "js/export/ExportClass.js"></script>
 	<script type="text/javascript" src = "js/Main.js"></script>
 	
-	
 	<!--
 	Add and Export Test-->
 	
 	<script type="text/javascript" src = "tests/AddExportTest.js"></script>
-	
 </html>

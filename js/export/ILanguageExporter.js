@@ -1,9 +1,0 @@
-class ILanguageExporter{
-	constructor(){
-		
-	}
-	
-	exportClass(){
-		
-	}
-}

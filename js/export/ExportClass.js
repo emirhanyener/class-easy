@@ -1,14 +1,14 @@
 class ExportClass{
 	constructor(list){
 		this.list = list;
-		this.language = new ILanguageExporter();
+		this.language = new IExporter();
 	}
 	
-	exportClass(){
-		return this.language.exportClass();
+	exportStruct(){
+		return this.language.exportStruct();
 	}
 	
-	changeLanguage(language){
+	changeProgrammingLanguage(language){
 		this.language = language;
 	}
 }

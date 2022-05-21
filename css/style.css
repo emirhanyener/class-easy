@@ -38,6 +38,7 @@ body{
 }
 .addedValueItem:hover{
 	color: maroon;
+	cursor: pointer;
 }
 
 .group{
@@ -46,17 +47,18 @@ body{
 	margin: 0px 6px;
 }
 
-#exportBtn{
+#exportStructBtn{
 	background-color: rgba(0, 50, 50, 1);
 }
 
-#addBtn{
+#addClassBtn{
 	background-color: rgba(10, 40, 90, 1);
 }
 
 #addMethodBtn{
 	background-color: rgba(80, 125, 10, 1);
 }
+
 @media (max-width: 700px) {
 	.panelItem{
 		width: 100%;
@@ -65,6 +67,7 @@ body{
 		width: 100%;
 	}
 }
+
 @media (min-width: 700px) {
 	.panelItem{
 		width: 50%;

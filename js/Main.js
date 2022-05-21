@@ -1,23 +1,23 @@
 var list = new ClassValue();
 
-var values = document.getElementById("addedValues");
+var addedValues = document.getElementById("addedValuesDiv");
 var classType = document.getElementById("classType");
 var className = document.getElementById("className");
 var superClassName = document.getElementById("superClassName");
 var superClassType = document.getElementById("superClassType");
 
-var methods = document.getElementById("methods");
+var methodsTable = document.getElementById("methodsTable");
 
-var exportedClass = document.getElementById("exportedClass");
-var exportLanguage = document.getElementById("exportLanguage");
+var programmingLanguage = document.getElementById("programmingLanguage");
+var exportedStruct = document.getElementById("exportedStruct");
 var ec = new ExportClass(list);
-ec.changeLanguage(new JavaExporter());
+ec.changeProgrammingLanguage(new JavaExporter());
 
-exportLanguage.addEventListener("change", function(event) {
-	changeClassLanguage(eval(exportLanguage.value));
+programmingLanguage.addEventListener("change", function(event) {
+	changeClassProgrammingLanguage(eval(programmingLanguage.value));
 });
 
-function classAdd(){
+function addClass(){
 	methodModifiers = document.getElementsByClassName("methodModifierItem");
 	methodNames = document.getElementsByClassName("methodNameItem");
 	methodReturnTypes = document.getElementsByClassName("methodReturnTypeItem");
@@ -35,33 +35,35 @@ function classAdd(){
 	list.add(classType.value, className.value, superClassName.value, superClassType.value, methodsArray);
 	refreshValues();
 }
-function methodAdd(){
-	methods.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
+
+function addMethod(){
+	methodsTable.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
 }
 
-function classRemove(className){
+function removeClass(className){
 	list.remove(className);
 	refreshValues();
 }
 
 function refreshValues(){
-	values.innerHTML = "";
+	addedValues.innerHTML = "";
+
 	var iterator = new ClassValueListIterator(list);
 	
 	while(iterator.next()){
 		var item = "";
-		item += "<div class = 'addedValueItem' onClick = \"classRemove(\'" + iterator.get().className + "\')\">Class type: " + iterator.get().classType + "<br>Class name: " + iterator.get().className;
+		item += "<div class = 'addedValueItem' onClick = \"removeClass(\'" + iterator.get().className + "\')\">Class type: " + iterator.get().classType + "<br>Class name: " + iterator.get().className;
 		if(iterator.get().superClassName != "")
-			item += "<br>Super class name: " + iterator.get().superClassName  + "<br>Super class type: " + iterator.get().superClassType + "</div><br><br>";
-		else
-			item += "</div><br><br>";
-		values.innerHTML += item;
+			item += "<br>Super class name: " + iterator.get().superClassName  + "<br>Super class type: " + iterator.get().superClassType;
+		item += "</div><br>";
+		addedValues.innerHTML += item;
 	}
 }
 
-function exportClass(){
-	exportedClass.innerHTML = ec.exportClass();
+function exportStruct(){
+	exportedStruct.innerHTML = ec.exportStruct();
 }
-function changeClassLanguage(language){
-	ec.changeLanguage(language);
+
+function changeClassProgrammingLanguage(language){
+	ec.changeProgrammingLanguage(language);
 }

@@ -1,9 +1,9 @@
-class PythonExporter extends ILanguageExporter{
+class PythonExporter extends IExporter{
 	constructor(){
 		super();
 	}
 	
-	exportClass(){
+	exportStruct(){
 		var tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		var values = "";
 		var iterator = new ClassValueListIterator(list);
