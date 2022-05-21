@@ -1,10 +1,10 @@
 class PythonExporter extends IExporter{
+	tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	constructor(){
 		super();
 	}
 	
 	exportStruct(){
-		var tabSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		var values = "";
 		var iterator = new ClassValueListIterator(list);
 		
@@ -16,18 +16,8 @@ class PythonExporter extends IExporter{
 			}
 			values += ":<br>";
 			//class scope
-			if(iterator.get().classType == "class")
-				values += tabSpace + "def __init__(self): <br>" + tabSpace + tabSpace + "pass<br>";
-			if(iterator.get().methods.length != 0){
-				for(let i = 0; i < iterator.get().methods.length; i++){
-					if(iterator.get().methods[i][1] != "void")
-						values += tabSpace + "def " + iterator.get().methods[i][2] +"(): <br>" + tabSpace + tabSpace + "return <br>";
-					else
-						values += tabSpace + "def " + iterator.get().methods[i][2] +"(): <br>" + tabSpace + tabSpace + "pass <br>";
-				}
-			}
-			else
-				values += tabSpace + "pass";
+
+			values += this.exportClass(iterator.get());
 			
 			//class scope end
 			values += "</div><br>"
@@ -36,7 +26,19 @@ class PythonExporter extends IExporter{
 	}
 
 	exportClass(classValue){
-		
+		var values = this.tabSpace + "def __init__(self): <br>" + this.tabSpace + this.tabSpace + "pass<br>";
+
+		if(classValue.methods.length != 0){
+			for(let i = 0; i < classValue.methods.length; i++){
+				if(classValue.methods[i][1] != "void")
+					values += this.tabSpace + "def " + classValue.methods[i][2] +"(): <br>" + this.tabSpace + this.tabSpace + "return <br>";
+				else
+					values += this.tabSpace + "def " + classValue.methods[i][2] +"(): <br>" + this.tabSpace + this.tabSpace + "pass <br>";
+			}
+		}
+		else
+			values += this.tabSpace + "pass";
+		return values;
 	}
 
 	exportInterface(classValue){
