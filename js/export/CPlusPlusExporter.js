@@ -36,25 +36,27 @@ class CPlusPlusExporter extends ILanguageExporter{
 					}
 				}
 			}
-			if(iterator.get().classType == "class"){
+			if(iterator.get().classType == "class")
 				values += tabSpace + "public:<br> " + tabSpace + iterator.get().className + "() {<br><br>" + tabSpace + "}<br>";
-				for(let i = 0; i < iterator.get().methods.length; i++){
-					if(iterator.get().methods[i][0] == "public"){
-						if(iterator.get().classType == "class"){
-							if(iterator.get().methods[i][1] == "void")
-								values += tabSpace + "void "+ iterator.get().methods[i][2] +"() {<br><br>" + tabSpace + "}<br>";
-							else
-								values += tabSpace + iterator.get().methods[i][1] + " "+ iterator.get().methods[i][2] +"() {<br>" + tabSpace + tabSpace + "return //"+ iterator.get().methods[i][1] + "<br>" + tabSpace + "}<br>";
-						}
-						else{
-							if(iterator.get().methods[i][1] == "void")
-								values += tabSpace + "void "+ iterator.get().methods[i][2] +"() = 0;<br>";
-							else
-								values += tabSpace + iterator.get().methods[i][1] + " "+ iterator.get().methods[i][2] +"() = 0;<br>";
-						}
+			else
+				values += tabSpace + "public:<br>";
+			for(let i = 0; i < iterator.get().methods.length; i++){
+				if(iterator.get().methods[i][0] == "public"){
+					if(iterator.get().classType == "class"){
+						if(iterator.get().methods[i][1] == "void")
+							values += tabSpace + "void "+ iterator.get().methods[i][2] +"() {<br><br>" + tabSpace + "}<br>";
+						else
+							values += tabSpace + iterator.get().methods[i][1] + " "+ iterator.get().methods[i][2] +"() {<br>" + tabSpace + tabSpace + "return //"+ iterator.get().methods[i][1] + "<br>" + tabSpace + "}<br>";
+					}
+					else{
+						if(iterator.get().methods[i][1] == "void")
+							values += tabSpace + "void "+ iterator.get().methods[i][2] +"() = 0;<br>";
+						else
+							values += tabSpace + iterator.get().methods[i][1] + " "+ iterator.get().methods[i][2] +"() = 0;<br>";
 					}
 				}
 			}
+			
 			//class scope end
 			values += "}</div><br>"
 		}
@@ -64,6 +66,14 @@ class CPlusPlusExporter extends ILanguageExporter{
 	countPrivateMethods(iterator){
 		for(let i = 0; i < iterator.get().methods.length; i++){
 			if(iterator.get().methods[i][0] == "private"){
+				return true;
+			}
+		}
+		return false;
+	}
+	countPublicMethods(iterator){
+		for(let i = 0; i < iterator.get().methods.length; i++){
+			if(iterator.get().methods[i][0] == "public"){
 				return true;
 			}
 		}
