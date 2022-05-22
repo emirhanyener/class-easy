@@ -1,4 +1,6 @@
 var list = new ClassValue();
+var version = "1.0.0";
+document.getElementById("versionTxt").innerHTML = "version " + version;
 
 //form elements
 var addedValues = document.getElementById("addedValuesDiv");
