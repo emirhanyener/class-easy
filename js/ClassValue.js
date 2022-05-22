@@ -8,6 +8,7 @@ class ClassValue{
 		this.next = null;
 	}
 	
+	//add new class value
 	add(classType, className, superClassName, superClassType, methods){
 		if(!this.isExist(className)){
 			if(this.next == null){
@@ -19,6 +20,7 @@ class ClassValue{
 		}
 	}
 	
+	//remove added class value
 	remove(className){
 		if(this.next != null){
 			if(this.next.className == className)
@@ -29,13 +31,17 @@ class ClassValue{
 		}
 	}
 	
+	//return true if class value is exist in list
 	isExist(className){
 		if(this.next != null){
-			if(this.next.className == className)
+			if(this.next.className == className){
 				return true;
-			if(this.next.isExist(className))
+			}
+			if(this.next.isExist(className)){
 				return true;
+			}
 		}
+
 		return false;
 	}
 }

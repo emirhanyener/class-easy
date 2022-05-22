@@ -1,17 +1,9 @@
+//Programming language exporter interface
 class IExporter{
-	constructor(){
-		
-	}
+	constructor(){}
 	
-	exportStruct(){
-		
-	}
-	
-	exportClass(classValue){
-
-	}
-
-	exportInterface(classValue){
-		
-	}
+	//methods
+	exportStruct(){}
+	exportClass(classValue){}
+	exportInterface(classValue){}
 }

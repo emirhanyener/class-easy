@@ -4,6 +4,7 @@ class ClassValueListIterator{
 		this.list = _list;
 	}
 	
+	//new node in list
 	next(){
 		if(this.list.next != null){
 			this.list = this.list.next;
@@ -12,10 +13,12 @@ class ClassValueListIterator{
 		return false;
 	}
 	
+	//current node in list
 	get(){
 		return this.list;
 	}
 	
+	//set first node
 	resetList(){
 		this.list = this.first;
 	}
