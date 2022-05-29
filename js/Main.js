@@ -42,6 +42,14 @@ function addClass(){
 	refreshValues();
 }
 
+function copyToClipboard(){
+	let structValue = exportedStruct.innerText;
+	structValue.replace("&nbsp;", " ");
+	structValue.replace("<br>", "\n");
+
+	navigator.clipboard.writeText(structValue);
+}
+
 //create method elements
 function addMethod(){
 	methodsTable.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
