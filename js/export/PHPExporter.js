@@ -39,7 +39,7 @@ class PHPExporter extends IExporter{
 		return values;
 	}
 
-	//return class code for java
+	//return class code for php
 	exportClass(classValue){
 		var values = "";
 		values += this.tabSpace + "public " + classValue.className + "() {<br><br>" + this.tabSpace + "}<br>";
@@ -53,7 +53,7 @@ class PHPExporter extends IExporter{
 		return values;
 	}
 
-	//return interface code for java
+	//return interface code for php
 	exportInterface(classValue){
 		var values = "";
 
