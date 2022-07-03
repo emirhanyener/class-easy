@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var version = "1.1.0";
+var version = "1.2.0";
 document.getElementById("versionTxt").innerHTML = "version " + version;
 
 //form elements
