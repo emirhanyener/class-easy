@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var version = "1.0.0";
+var version = "1.1.0";
 document.getElementById("versionTxt").innerHTML = "version " + version;
 
 //form elements
@@ -52,7 +52,7 @@ function copyToClipboard(){
 
 //create method elements
 function addMethod(){
-	methodsTable.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>"
+	methodsTable.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>";
 }
 
 //remove class value
@@ -65,7 +65,7 @@ function removeClass(className){
 function refreshValues(){
 	addedValues.innerHTML = "";
 
-	var iterator = new ClassValueListIterator(list);
+	let iterator = new ClassValueListIterator(list);
 	
 	while(iterator.next()){
 		var item = "";
@@ -76,6 +76,8 @@ function refreshValues(){
 		item += "</div><br>";
 		addedValues.innerHTML += item;
 	}
+	
+	refreshSuperClassNames();
 }
 
 //export code struct
@@ -86,4 +88,16 @@ function exportStruct(){
 //change class programming language
 function changeClassProgrammingLanguage(language){
 	ec.changeProgrammingLanguage(language);
+}
+
+function refreshSuperClassNames(){
+	superClassName.innerHTML = "<option value = \"\"></option>";
+
+	let iterator = new ClassValueListIterator(list);
+	
+	while(iterator.next()){
+		var item = "";
+		item += "<option value = \"" + iterator.get().className + "\">" + iterator.get().className + "</option>";
+		superClassName.innerHTML += item;
+	}
 }
