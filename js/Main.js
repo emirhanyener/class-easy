@@ -58,6 +58,12 @@ function addMethod(){
 //remove class value
 function removeClass(className){
 	list.remove(className);
+	let iterator = new ClassValueListIterator(list);
+	while(iterator.next()){
+		if(iterator.get().superClassName == className){
+			list.remove(iterator.get().className);
+		}
+	}
 	refreshValues();
 }
 
