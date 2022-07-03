@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var version = "1.2.0";
+var version = "1.3.0";
 document.getElementById("versionTxt").innerHTML = "version " + version;
 
 //form elements
@@ -7,7 +7,6 @@ var addedValues = document.getElementById("addedValuesDiv");
 var classType = document.getElementById("classType");
 var className = document.getElementById("className");
 var superClassName = document.getElementById("superClassName");
-var superClassType = document.getElementById("superClassType");
 var programmingLanguage = document.getElementById("programmingLanguage");
 
 //div and table
@@ -38,7 +37,7 @@ function addClass(){
 		}
 	}
 	
-	list.add(classType.value, className.value, superClassName.value, superClassType.value, methodsArray);
+	list.add(classType.value, className.value, superClassName.value, list.get(superClassName.value).classType, methodsArray);
 	refreshValues();
 }
 

@@ -44,4 +44,15 @@ class ClassValue{
 
 		return false;
 	}
+
+
+	get(className){
+		if(this.next != null){
+			if(this.next.className == className)
+				return this.next;
+			else{
+				return this.next.get(className);
+			}
+		}
+	}
 }
