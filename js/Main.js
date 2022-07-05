@@ -1,6 +1,7 @@
 var list = new ClassValue();
 var version = "1.3.0";
 document.getElementById("versionTxt").innerHTML = "version " + version;
+let methodCounter = 0;
 
 //form elements
 var addedValues = document.getElementById("addedValuesDiv");
@@ -36,7 +37,7 @@ function addClass(){
 			}
 		}
 	}
-	
+	methodCounter = 0;
 	list.add(classType.value, className.value, superClassName.value, list.get(superClassName.value).classType, methodsArray);
 	refreshValues();
 }
@@ -49,9 +50,15 @@ function copyToClipboard(){
 	navigator.clipboard.writeText(structValue);
 }
 
-//create method elements
+//add method element
 function addMethod(){
-	methodsTable.innerHTML += "<tr><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>";
+	methodsTable.innerHTML += "<tr class = \"methodRowItem\"><td onClick = \"removeMethod(" + methodCounter + ")\">X</td><td><select class = 'control methodModifierItem'><option>public</option><option>protected</option><option>private</option></select></td><td><input type = 'text' class = 'control methodReturnTypeItem' placeholder = 'return type' /></td><td><input type = 'text' class = 'control methodNameItem' placeholder = 'method name' /></td></tr>";
+	methodCounter++;
+}
+
+//remove method element
+function removeMethod(id){
+	document.getElementsByClassName("methodRowItem")[id].innerHTML = "";
 }
 
 //remove class value
