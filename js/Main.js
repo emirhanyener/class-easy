@@ -40,6 +40,7 @@ function addClass(){
 	methodCounter = 0;
 	list.add(classType.value, className.value, superClassName.value, superClassName.value == "" ? "" : list.get(superClassName.value).classType, methodsArray);
 	refreshValues();
+	resetAll();
 }
 
 function copyToClipboard(){
@@ -102,6 +103,7 @@ function changeClassProgrammingLanguage(language){
 	ec.changeProgrammingLanguage(language);
 }
 
+
 function refreshSuperClassNames(){
 	superClassName.innerHTML = "<option value = \"\"></option>";
 
@@ -112,4 +114,12 @@ function refreshSuperClassNames(){
 		item += "<option value = \"" + iterator.get().className + "\">" + iterator.get().className + "</option>";
 		superClassName.innerHTML += item;
 	}
+}
+
+//reset all form elements
+function resetAll(){
+	methodsTable.innerHTML = "";
+	classType.value = "class";
+	className.value = "";
+	superClassName.value = "";
 }
