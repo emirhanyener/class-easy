@@ -38,7 +38,7 @@ function addClass(){
 		}
 	}
 	methodCounter = 0;
-	list.add(classType.value, className.value, superClassName.value, list.get(superClassName.value).classType, methodsArray);
+	list.add(classType.value, className.value, superClassName.value, superClassName.value == "" ? "" : list.get(superClassName.value).classType, methodsArray);
 	refreshValues();
 }
 
