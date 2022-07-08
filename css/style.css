@@ -13,6 +13,7 @@ body{
 	background-color: #4f4;
 	padding: 15px 30px;
 	color: white;
+	text-align: center;
 }
 
 .control{
@@ -50,6 +51,15 @@ body{
 
 #exportStructBtn{
 	background-color: rgba(0, 50, 50, 1);
+}
+
+#exportDiagramBtn{
+	background-color: rgba(0, 50, 50, 1);
+}
+
+#diagram-canvas{
+	border: 1px solid white;
+	text-align: center;
 }
 
 #addClassBtn{

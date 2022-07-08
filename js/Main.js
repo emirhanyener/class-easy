@@ -13,6 +13,10 @@ var programmingLanguage = document.getElementById("programmingLanguage");
 //div and table
 var methodsTable = document.getElementById("methodsTable");
 var exportedStruct = document.getElementById("exportedStruct");
+var exportCanvas = document.getElementById("diagram-canvas");
+exportCanvas.setAttribute('width', window.innerWidth * 0.8);
+exportCanvas.setAttribute('height', window.innerHeight * 0.8);
+var canvasContext = exportCanvas.getContext("2d");
 
 var ec = new ExportClass(list);
 ec.changeProgrammingLanguage(new JavaExporter());
@@ -96,6 +100,28 @@ function refreshValues(){
 //export code struct
 function exportStruct(){
 	exportedStruct.innerHTML = ec.exportStruct();
+}
+
+//export visual diagram
+function exportDiagram(){
+	let iterator = new ClassValueListIterator(list);
+	let x = 30;
+	let y = 30;
+	
+	while(iterator.next()){
+		canvasContext.fillStyle = "#FFFFFF";
+		canvasContext.font = "14px Arial";
+		canvasContext.fillText(iterator.get().className, x, y);
+		y += 20;
+		iterator.get().methods.forEach(element => {
+			canvasContext.fillText((element[0] == "public" ? "+" : "-") + element[2] + ":" + element[1], x, y);
+			y += 20;
+
+		});
+		canvasContext.fillText(iterator.get().className, x, y);
+		y = 30;
+		x += 200;
+	}
 }
 
 //change class programming language

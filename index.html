@@ -98,7 +98,8 @@
 							</tr>
 							<tr>
 								<!-- Export button -->
-								<td colspan = 2><center><div onClick="exportStruct()" id = "exportStructBtn" class = "btn cursorHand">Export</div></center></td>
+								<td><div onClick="exportStruct()" id = "exportStructBtn" class = "btn cursorHand">Code</div></td>
+								<td><div onClick="exportDiagram()" id = "exportDiagramBtn" class = "btn cursorHand">Diagram</div></td>
 							</tr>
 						</table>
 					</div>
@@ -111,6 +112,7 @@
 					</div>
 				</div>
 			</div>
+			<center><canvas id = "diagram-canvas"></center>
 			<div id = "versionTxt"></div>
 		</div>
 	</body>
