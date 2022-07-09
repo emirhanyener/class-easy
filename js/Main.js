@@ -106,20 +106,38 @@ function exportStruct(){
 function exportDiagram(){
 	let iterator = new ClassValueListIterator(list);
 	let x = 30;
-	let y = 30;
+	let y = 50;
 	
 	while(iterator.next()){
 		canvasContext.fillStyle = "#FFFFFF";
 		canvasContext.font = "14px Arial";
+		canvasContext.beginPath();
+		canvasContext.strokeStyle = "#FFFFFF";
+		canvasContext.rect(x - 5, y - 20, 195, (iterator.get().methods.length + 2) * 28);
+		canvasContext.stroke();
 		canvasContext.fillText(iterator.get().className, x, y);
+
+		canvasContext.beginPath();
+		canvasContext.moveTo(x - 5, y + 5);
+		canvasContext.lineTo(x + 190, y + 5);
+		canvasContext.stroke();
+
 		y += 20;
+
+		canvasContext.beginPath();
+		canvasContext.moveTo(x - 5, y + 5);
+		canvasContext.lineTo(x + 190, y + 5);
+		canvasContext.stroke();
+		
+		y += 20;
+
 		iterator.get().methods.forEach(element => {
-			canvasContext.fillText((element[0] == "public" ? "+" : "-") + element[2] + ":" + element[1], x, y);
+			canvasContext.fillText((element[0] == "public" ? "+" : "-") + element[2] + "():" + element[1], x, y);
 			y += 20;
 
 		});
-		canvasContext.fillText(iterator.get().className, x, y);
-		y = 30;
+		canvasContext.fillText("+" + iterator.get().className + "()", x, y);
+		y = 50;
 		x += 200;
 	}
 }

@@ -27,5 +27,6 @@ console.log("ruby success");
 changeClassProgrammingLanguage(new JavaExporter());
 exportStruct();
 console.log("java success");
+exportDiagram();
 
 alert("test success");
