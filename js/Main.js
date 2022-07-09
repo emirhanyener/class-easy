@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var version = "1.3.0";
+var version = "2.0.0";
 document.getElementById("versionTxt").innerHTML = "version " + version;
 let methodCounter = 0;
 
@@ -136,7 +136,7 @@ function exportDiagram(){
 	while(iterator.next()){
 		if(iterator.get().superClassName == ""){
 			drawToCanvas(iterator.get(), x, y);
-			x = drawDiagram(iterator.get(), x, y + 200);
+			x = drawDiagram(iterator.get(), x, y);
 		}
 	}
 }
@@ -144,13 +144,20 @@ function exportDiagram(){
 function drawDiagram(class_value, _x, _y){
 	let iterator = new ClassValueListIterator(list);
 	let x = _x;
-	let y = _y;
+	let y = _y + 200;
 	let counter = 0;
 
 	while(iterator.next()){
 		if(iterator.get().superClassName == class_value.className){
 			drawToCanvas(iterator.get(), x, y);
-			x = drawDiagram(iterator.get(), x, y + 200) + 200;
+			canvasContext.strokeStyle = "#FFFFFF";
+			canvasContext.beginPath();
+			canvasContext.moveTo(x + 100, y - 20);
+			canvasContext.lineTo(x + 100, y - 50 - 20);
+			canvasContext.lineTo(_x + 100, y - 50 - 20);
+			canvasContext.lineTo(_x + 100, _y + class_value.methods.length * 20 + 52);
+			canvasContext.stroke();
+			x = drawDiagram(iterator.get(), x, y) + 200;
 			counter++;
 		}
 	}
