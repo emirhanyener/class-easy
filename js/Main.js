@@ -24,6 +24,19 @@ programmingLanguage.addEventListener("change", function(event) {
 	changeClassProgrammingLanguage(eval(programmingLanguage.value));
 });
 
+class Size{
+	constructor(){
+		this.w = 0;
+		this.h = 0;
+	}
+	reset(){
+		this.w = 0;
+		this.h = 0;
+	}
+}
+
+let canvasSize = new Size();
+
 //add new class node to list
 function addClass(){
 	methodModifiers = document.getElementsByClassName("methodModifierItem");
@@ -109,15 +122,21 @@ function exportDiagram(){
 	let y = 50;
 	canvasContext.fillStyle = "#333333";
 	canvasContext.fillRect(0, 0, window.innerWidth * 0.8, window.innerHeight * 0.8);
-
-	//drawToCanvas(iterator.get(), x, y);
 	
+	while(iterator.next()){
+		if(iterator.get().superClassName == ""){
+			calculateCanvasSize(iterator.get(), x, y + 200);
+		}
+	}
+	exportCanvas.setAttribute('width', canvasSize.w);
+	exportCanvas.setAttribute('height', canvasSize.h + 200);
+	console.log(canvasSize);
+	canvasSize.reset();
+	iterator.resetList();
 	while(iterator.next()){
 		if(iterator.get().superClassName == ""){
 			drawToCanvas(iterator.get(), x, y);
 			x = drawDiagram(iterator.get(), x, y + 200);
-
-			console.log(x);
 		}
 	}
 }
@@ -136,6 +155,27 @@ function drawDiagram(class_value, _x, _y){
 		}
 	}
 	
+	return x;
+}
+
+function calculateCanvasSize(class_value, _x, _y){
+	let iterator = new ClassValueListIterator(list);
+	let x = _x;
+	let y = _y;
+	let counter = 0;
+
+	while(iterator.next()){
+		if(iterator.get().superClassName == class_value.className){
+			x = calculateCanvasSize(iterator.get(), x, y + 200) + 200;
+			counter++;
+		}
+	}
+	
+	if(canvasSize.w < x)
+		canvasSize.w = x;
+	if(canvasSize.h < counter * 200)
+		canvasSize.h = counter * 200;
+
 	return x;
 }
 
