@@ -6,6 +6,7 @@ It is used to create and manage class management and class structure for softwar
 ## Featues
 - [X] Code add and remove panel
 - [X] Export code struct
+- [X] Add methods to class
 - [X] Export class diagram model
 - [ ] Edit added class
 - [ ] Add variables in class
