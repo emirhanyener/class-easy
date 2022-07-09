@@ -107,39 +107,68 @@ function exportDiagram(){
 	let iterator = new ClassValueListIterator(list);
 	let x = 30;
 	let y = 50;
+	canvasContext.fillStyle = "#333333";
+	canvasContext.fillRect(0, 0, window.innerWidth * 0.8, window.innerHeight * 0.8);
+
+	//drawToCanvas(iterator.get(), x, y);
 	
 	while(iterator.next()){
-		canvasContext.fillStyle = "#FFFFFF";
-		canvasContext.font = "14px Arial";
-		canvasContext.beginPath();
-		canvasContext.strokeStyle = "#FFFFFF";
-		canvasContext.rect(x - 5, y - 20, 195, (iterator.get().methods.length + 2) * 28);
-		canvasContext.stroke();
-		canvasContext.fillText(iterator.get().className, x, y);
+		if(iterator.get().superClassName == ""){
+			drawToCanvas(iterator.get(), x, y);
+			x = drawDiagram(iterator.get(), x, y + 200);
 
-		canvasContext.beginPath();
-		canvasContext.moveTo(x - 5, y + 5);
-		canvasContext.lineTo(x + 190, y + 5);
-		canvasContext.stroke();
-
-		y += 20;
-
-		canvasContext.beginPath();
-		canvasContext.moveTo(x - 5, y + 5);
-		canvasContext.lineTo(x + 190, y + 5);
-		canvasContext.stroke();
-		
-		y += 20;
-
-		iterator.get().methods.forEach(element => {
-			canvasContext.fillText((element[0] == "public" ? "+" : "-") + element[2] + "():" + element[1], x, y);
-			y += 20;
-
-		});
-		canvasContext.fillText("+" + iterator.get().className + "()", x, y);
-		y = 50;
-		x += 200;
+			console.log(x);
+		}
 	}
+}
+
+function drawDiagram(class_value, _x, _y){
+	let iterator = new ClassValueListIterator(list);
+	let x = _x;
+	let y = _y;
+	let counter = 0;
+
+	while(iterator.next()){
+		if(iterator.get().superClassName == class_value.className){
+			drawToCanvas(iterator.get(), x, y);
+			x = drawDiagram(iterator.get(), x, y + 200) + 200;
+			counter++;
+		}
+	}
+	
+	return x;
+}
+
+//this function draws a class rect to canvas
+function drawToCanvas(class_value, x, y){
+	canvasContext.fillStyle = "#FFFFFF";
+	canvasContext.font = "14px Arial";
+	canvasContext.beginPath();
+	canvasContext.strokeStyle = "#FFFFFF";
+	canvasContext.rect(x - 5, y - 20, 195, (class_value.methods.length + 2) * 28);
+	canvasContext.stroke();
+	canvasContext.fillText(class_value.className, x, y);
+
+	canvasContext.beginPath();
+	canvasContext.moveTo(x - 5, y + 5);
+	canvasContext.lineTo(x + 190, y + 5);
+	canvasContext.stroke();
+
+	y += 20;
+
+	canvasContext.beginPath();
+	canvasContext.moveTo(x - 5, y + 5);
+	canvasContext.lineTo(x + 190, y + 5);
+	canvasContext.stroke();
+	
+	y += 20;
+
+	class_value.methods.forEach(element => {
+		canvasContext.fillText((element[0] == "public" ? "+" : "-") + element[2] + "():" + element[1], x, y);
+		y += 20;
+
+	});
+	canvasContext.fillText("+" + class_value.className + "()", x, y);
 }
 
 //change class programming language
