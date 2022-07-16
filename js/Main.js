@@ -151,12 +151,18 @@ function drawDiagram(class_value, _x, _y){
 		if(iterator.get().superClassName == class_value.className){
 			drawToCanvas(iterator.get(), x, y);
 			canvasContext.strokeStyle = "#FFFFFF";
+			canvasContext.fillStyle = "#FFFFFF";
 			canvasContext.beginPath();
 			canvasContext.moveTo(x + 100, y - 20);
 			canvasContext.lineTo(x + 100, y - 50 - 20);
 			canvasContext.lineTo(_x + 100, y - 50 - 20);
 			canvasContext.lineTo(_x + 100, _y + class_value.methods.length * 20 + 52);
 			canvasContext.stroke();
+			canvasContext.beginPath();
+			canvasContext.moveTo(_x + 100, _y + class_value.methods.length * 20 + 52);
+			canvasContext.lineTo(_x + 90, _y + class_value.methods.length * 20 + 70);
+			canvasContext.lineTo(_x + 110, _y + class_value.methods.length * 20 + 70);
+			canvasContext.fill();
 			x = drawDiagram(iterator.get(), x, y) + 200;
 			counter++;
 		}
