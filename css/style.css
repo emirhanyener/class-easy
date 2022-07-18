@@ -8,6 +8,19 @@ body{
 	padding: 10px 50px;
 }
 
+.class-list-table, .class-list-table td, .class-list-table tr, .class-list-table th{
+	padding: 10px;
+}
+
+.class-list-table{
+	border: 1px solid #FFFFFF;
+	width: 100%;
+}
+
+.class-list-table th{
+	border-bottom: 1px solid #FFFFFF;
+}
+
 .btn{
 	border: none;
 	background-color: #4f4;

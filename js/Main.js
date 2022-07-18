@@ -1,5 +1,5 @@
 var list = new ClassValue();
-var version = "2.0.0";
+var version = "2.0.2";
 document.getElementById("versionTxt").innerHTML = "version " + version;
 let methodCounter = 0;
 
@@ -96,16 +96,22 @@ function refreshValues(){
 	addedValues.innerHTML = "";
 
 	let iterator = new ClassValueListIterator(list);
+	var item = "<table class = \"class-list-table\"><tr><th colspan = 2>Name</th><th>Remove</th><th>Edit</th></tr>";
 	
 	while(iterator.next()){
-		var item = "";
-		item += "<div class = 'addedValueItem' onClick = \"removeClass(\'" + iterator.get().className + "\')\">Class type: " + iterator.get().classType + "<br>Class name: " + iterator.get().className;
-		if(iterator.get().superClassName != ""){
-			item += "<br>Super class name: " + iterator.get().superClassName  + "<br>Super class type: " + iterator.get().superClassType;
+		if(iterator.get().superClassName != ""){			
+			item += "<tr><td>Class Name</td><td>" + iterator.get().className + "</td><td rowspan = \"3\" onClick = \"removeClass(\'" + iterator.get().className + "\')\">Remove</td><td rowspan = \"3\">Edit</td></tr>";
+			item += "<tr><td>Super Class Name</td><td>" + iterator.get().superClassName + "</td></tr>";
+			item += "<tr><td>Class Type</td><td>" + iterator.get().classType + "</td></tr>";
 		}
-		item += "</div><br>";
-		addedValues.innerHTML += item;
+		else{
+			item += "<tr><td>Class Name</td><td>" + iterator.get().className + "</td><td rowspan = \"2\" onClick = \"removeClass(\'" + iterator.get().className + "\')\">Remove</td><td rowspan = \"2\">Edit</td></tr>";
+			item += "<tr><td>Class Type</td><td>" + iterator.get().classType + "</td></tr>";
+		}
+		item += "<tr><td style = \"background-color: rgba(100, 100, 100, 0.2);padding: 0px;\" colspan = \"4\">&nbsp;</td></tr>"
 	}
+	item += "</table>";
+	addedValues.innerHTML = item;
 	
 	refreshSuperClassNames();
 }
