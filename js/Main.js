@@ -60,6 +60,7 @@ function addClass(){
 	resetAll();
 }
 
+//copy to clipboard (exported code struct)
 function copyToClipboard(){
 	let structValue = exportedStruct.innerText;
 	structValue.replace("&nbsp;", " ");
@@ -147,6 +148,7 @@ function exportDiagram(){
 	}
 }
 
+//draw all class diagram
 function drawDiagram(class_value, _x, _y){
 	let iterator = new ClassValueListIterator(list);
 	let x = _x;
@@ -177,6 +179,7 @@ function drawDiagram(class_value, _x, _y){
 	return x;
 }
 
+//calculate canvas size for sum width
 function calculateCanvasSize(class_value, _x, _y){
 	let iterator = new ClassValueListIterator(list);
 	let x = _x;
@@ -198,7 +201,7 @@ function calculateCanvasSize(class_value, _x, _y){
 	return x;
 }
 
-//this function draws a class rect to canvas
+//this function draws single class rect to canvas
 function drawToCanvas(class_value, x, y){
 	canvasContext.fillStyle = "#FFFFFF";
 	canvasContext.font = "14px Arial";
@@ -235,7 +238,7 @@ function changeClassProgrammingLanguage(language){
 	ec.changeProgrammingLanguage(language);
 }
 
-
+//updates select box for all class names
 function refreshSuperClassNames(){
 	superClassName.innerHTML = "<option value = \"\"></option>";
 

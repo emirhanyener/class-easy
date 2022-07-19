@@ -44,5 +44,5 @@ class RubyExporter extends IExporter{
 	}
 
 	//return interface code for ruby
-	exportInterface(classValue){ }
+	exportInterface(classValue){}
 }

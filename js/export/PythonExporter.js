@@ -50,7 +50,5 @@ class PythonExporter extends IExporter{
 		return values;
 	}
 
-	exportInterface(classValue){
-
-	}
+	exportInterface(classValue){}
 }
