@@ -1,5 +1,5 @@
 # class-easy
-**class-easy** is a web based software developer tool for creating easy class diagram and fast code export for any object oriented language. 
+**class-easy** is a javascript based online software developer tool for creating easy class diagram and fast code export for any object oriented language. 
 ## About class-easy
 It is used to create and manage class management and class structure for software.
 
@@ -8,6 +8,7 @@ It is used to create and manage class management and class structure for softwar
 - [X] Export code struct
 - [X] Add methods to class
 - [X] Export class diagram model
+- [ ] Customize diagram color
 - [ ] Edit added class
 - [ ] Add variables in class
 
@@ -22,10 +23,11 @@ git clone https://github.com/emirhanyener/class-easy.git
 
 ## Images
 
-### panel and exported code struct
+### Panel and exported code struct
 ![Screenshot](https://github.com/emirhanyener/class-easy/blob/main/images/main_panel.PNG)
+![Screenshot](https://github.com/emirhanyener/class-easy/blob/main/images/panel_2.PNG)
 
-### expored diagram model
+### Exported diagram model
 ![Screenshot](https://github.com/emirhanyener/class-easy/blob/main/images/diagram_exported.PNG)
 
 ## License
